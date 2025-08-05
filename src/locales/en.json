@@ -1,11 +1,11 @@
 {
   "nav": {
-    "support": "Support Us",
-    "about": "About",
-    "articles": "Inspiration",
-    "dreamInterpretation": "Talk Mode",
-    "horoscope": "Advice Mode",
-    "tarotReading": "Journal Mode"
+    "support": "Support Project",
+    "about": "About Us",
+    "articles": "Articles",
+    "dreamInterpretation": "Dream Interpretation",
+    "horoscope": "Horoscope",
+    "tarotReading": "Tarot Reading"
   },
   "auth": {
     "login": "Login",
@@ -14,73 +14,73 @@
   "login": "Login",
   "logout": "Logout",
   "hero": {
-    "title": "Your Gentle",
-    "titleHighlight": "AI Companion",
-    "description": "Support, advice, and a listening ear — always here for you.",
-    "aiPowered": "Empathetic AI",
-    "trustedUsers": "A Safe Space for You"
+    "title": "Reveal the Meaning",
+    "titleHighlight": "Beyond",
+    "description": "Discover hidden meanings through AI-powered dream interpretation, personalized horoscopes, and mystical tarot readings.",
+    "aiPowered": "Powered by Advanced AI",
+    "trustedUsers": "Trusted by 100K+ Users"
   },
   "footer": {
-    "brandName": "Gentle AI",
+    "brandName": "Mystical AI",
     "createdWith": "Created with",
-    "forSeekers": "for you",
-    "copyright": "© 2025 Gentle AI. All rights reserved.",
+    "forSeekers": "for wisdom seekers",
+    "copyright": "© 2025 Mystical AI. All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service"
   },
   "interactive": {
-    "title": "How can I help you today?",
-    "meowMode": "Enable Soft Mode",
-    "meowModeTooltip": "A gentle, ultra-comforting version of the assistant with slow pacing and calm tone.",
-    "atmosphereMode": "Calm Music",
-    "atmosphereModeTooltip": "Enables soft background music for a relaxing atmosphere.",
+    "title": "Choose Your Mystical Path",
+    "meowMode": "Enable Meow Mode",
+    "meowModeTooltip": "Meow mode activates a fluffy fortune-telling cat: it purrs, hisses, and predicts fate with a tailed character.",
+    "atmosphereMode": "Atmosphere",
+    "atmosphereModeTooltip": "Enables mystical background music to create an atmosphere of ancient rituals and magical practices.",
     "services": {
-      "talk": {
-        "title": "Talk Mode",
-        "description": "Chat about feelings, daily life, or just have a cozy talk when you're lonely or stressed.",
-        "placeholder": "What's on your mind today? I'm here to listen."
+      "dreams": {
+        "title": "Dream Interpretation",
+        "description": "Reveal hidden meanings and symbols in your dreams through AI analysis.",
+        "placeholder": "Describe your dream in detail... What did you see, feel, or experience?"
       },
-      "advice": {
-        "title": "Advice Mode",
-        "description": "Ask for practical advice on relationships, fashion, health, or career.",
-        "placeholder": "What do you need advice on?"
+      "horoscope": {
+        "title": "Personal Horoscope",
+        "description": "Get personalized astrological insights based on your birth data.",
+        "placeholder": "Provide your birth date, time, location, or any other personal information for a personalized reading..."
       },
-      "journal": {
-        "title": "Journal Mode",
-        "description": "Reflect on your day or emotions, and get thoughtful prompts or responses.",
-        "placeholder": "Write down your thoughts and feelings..."
+      "tarot": {
+        "title": "Tarot Reading",
+        "description": "Receive guidance through mystical tarot card interpretations.",
+        "placeholder": "Ask a specific question or describe a situation you need advice about..."
       },
-      "compliment": {
-        "title": "Compliment Me",
-        "description": "Need a confidence boost? Let AI cheer you up with sincere compliments and affirmations.",
-        "placeholder": "Just say 'compliment me' or 'I need a boost'!"
-      },
-      "style": {
-        "title": "Style Coach",
-        "description": "Get help with outfit ideas or beauty tips for different moods and occasions.",
-        "placeholder": "What's the occasion? Or what's your mood?"
-      },
-      "soft": {
-        "title": "Soft Mode",
-        "description": "A gentle, ultra-comforting version of the assistant with slow pacing and calm tone.",
-        "placeholder": "Tell me anything... I'm here for you."
+      "numerology": {
+        "title": "Numerology",
+        "description": "Discover the mysteries of numbers in your life through birth date and name analysis.",
+        "placeholder": "Enter your full name and birth date (e.g., John Smith, March 15, 1990)..."
       },
       "oracle": {
-        "title": "Ask the Oracle",
-        "description": "A whimsical mystical feature for fun (light-hearted and optional).",
-        "placeholder": "Ask a light-hearted question to the oracle..."
+        "title": "Oracle Question",
+        "description": "Receive wise answers from an ancient oracle on any life question.",
+        "placeholder": "Formulate your question about love, work, future, or any other area of life..."
+      },
+      "regression": {
+        "title": "Past Life Regression",
+        "description": "Discover memories from past incarnations and their connection to the present.",
+        "placeholder": "Describe yourself, your life, interests, or simply write 'show me my past life'..."
       }
     },
     "buttons": {
-      "submit": "Talk to Me 💬",
-      "loading": "Thinking...",
+      "submit": "Reveal Meanings",
+      "loading": "Consulting the cosmos...",
       "loadingMessages": [
-        "Thinking...",
-        "Finding the right words...",
-        "Listening closely...",
-        "Brewing some comforting thoughts...",
-        "Sending you a virtual hug...",
-        "Just a moment, I'm here for you..."
+        "Consulting the cosmos...",
+        "Deciphering the signs of stars...",
+        "Listening to what the Universe whispers...",
+        "Opening ancient chronicles...",
+        "Gathering dream fragments by threads...",
+        "Penetrating beyond the obvious...",
+        "Performing the ritual of answer...",
+        "Cleaning the mirror of the future...",
+        "Cosmos is online. Connecting...",
+        "Searching for answer in dusty archives of Fate...",
+        "Loading mystical context..."
       ],
       "register": "Register to continue",
       "limitReached": "Daily limit reached",
@@ -88,32 +88,32 @@
       "copied": "Copied!"
     },
     "results": {
-      "title": "My thoughts",
-      "selectedCards": "A little something extra for you:"
+      "title": "Your Reading",
+      "selectedCards": "Selected cards:"
     }
   },
   "usage": {
-    "anonymous": "Free messages:",
+    "anonymous": "Without registration:",
     "remaining": "Remaining today:",
-    "register": "Register for more"
+    "register": "Register"
   },
   "auth": {
     "modal": {
-      "signUp": "Create Account",
-      "signIn": "Welcome Back",
-      "signUpDescription": "Create an account to get more messages and save your journal.",
-      "signInDescription": "Sign in to access your journal and continue our chat.",
+      "signUp": "Sign Up",
+      "signIn": "Sign In",
+      "signUpDescription": "Create an account to continue chatting with AI",
+      "signInDescription": "Sign in to your account to continue",
       "email": "Email",
       "password": "Password",
       "emailPlaceholder": "your@email.com",
       "passwordPlaceholder": "••••••••",
-      "signUpButton": "Create Account",
+      "signUpButton": "Sign Up",
       "signInButton": "Sign In",
-      "signUpLoading": "Creating account...",
+      "signUpLoading": "Signing up...",
       "signInLoading": "Signing in...",
       "switchToSignIn": "Already have an account? Sign In",
-      "switchToSignUp": "Don't have an account? Create one",
-      "terms": "By creating an account, you agree to our terms of service and privacy policy."
+      "switchToSignUp": "Don't have an account? Sign Up",
+      "terms": "By signing up, you agree to our terms of service and privacy policy."
     }
   }
 }

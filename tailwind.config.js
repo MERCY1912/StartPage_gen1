@@ -7,15 +7,7 @@ export default {
         'xs': '475px',
       },
       fontFamily: {
-        'sans': ['Quicksand', 'sans-serif'],
-        'serif': ['Playfair Display', 'serif'],
-      },
-      colors: {
-        'blush-pink': '#F1C4D9',
-        'lavender': '#E6E6FA',
-        'soft-mint': '#B2E2D8',
-        'creamy-white': '#F5F5DC',
-        'peach': '#FFDAB9',
+        'sans': ['Inter', 'sans-serif'],
       },
       animation: {
         'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -41,10 +33,6 @@ export default {
       backdropBlur: {
         xs: '2px',
       },
-      boxShadow: {
-        'glow': '0 0 20px rgba(147, 197, 253, 0.3)',
-        'glow-purple': '0 0 20px rgba(168, 85, 247, 0.3)',
-      }
     },
   },
   plugins: [],

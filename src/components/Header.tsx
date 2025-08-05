@@ -76,72 +76,38 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <header className="relative z-10 px-4 py-6 sm:px-6 lg:px-8">
+      <header className="relative z-10 px-4 py-6 sm:px-6 lg:px-8 border-b border-gray-200">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <a href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-200">
-          <div className="w-10 h-10 bg-gradient-to-br from-blush-pink to-peach rounded-full flex items-center justify-center shadow-md">
+        <a href="/" className="flex items-center space-x-3">
+          <div className="w-10 h-10 bg-black flex items-center justify-center">
             <Sparkles className="w-6 h-6 text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-700">
+          <h1 className="text-2xl font-bold text-black">
             {t('footer.brandName')}
           </h1>
         </a>
         
         {/* Right side controls */}
         <div className="hidden sm:flex items-center space-x-8">
-          {/* Atmosphere Toggle */}
-          <div className="flex items-center space-x-2">
-            <Music className={`w-4 h-4 transition-colors duration-300 ${isAtmosphereMode ? 'text-peach' : 'text-gray-400'}`} />
-            <div className="relative">
-              <button
-                type="button"
-                onMouseEnter={() => setShowAtmosphereTooltip(true)}
-                onMouseLeave={() => setShowAtmosphereTooltip(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors duration-200"
-              >
-                <HelpCircle className="w-3 h-3" />
-              </button>
-              {showAtmosphereTooltip && (
-                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-creamy-white border border-gray-200 rounded-lg text-xs text-gray-700 whitespace-nowrap shadow-lg z-50">
-                  {t('interactive.atmosphereModeTooltip')}
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-creamy-white"></div>
-                </div>
-              )}
-            </div>
-            <button
-              type="button"
-              onClick={() => setIsAtmosphereMode(!isAtmosphereMode)}
-              className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-peach/50 ${
-                isAtmosphereMode ? 'bg-blush-pink' : 'bg-gray-300'
-              }`}
-            >
-              <span
-                className={`inline-block h-3 w-3 transform rounded-full bg-white transition-transform duration-300 ${
-                  isAtmosphereMode ? 'translate-x-5' : 'translate-x-1'
-                }`}
-              />
-            </button>
-          </div>
-          
           {/* Language Toggle */}
-          <div className="flex items-center space-x-2 bg-creamy-white/50 backdrop-blur-sm border border-white/10 rounded-full p-1">
-          <Globe className="w-4 h-4 text-gray-400 ml-2" />
+          <div className="flex items-center space-x-2">
+          <Globe className="w-4 h-4 text-gray-500 ml-2" />
           <button
             onClick={() => setLanguage('ru')}
-            className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
+            className={`px-3 py-1 text-sm font-medium transition-all duration-200 ${
               language === 'ru'
-                ? 'bg-blush-pink text-white shadow-lg'
-                : 'text-gray-700 hover:bg-blush-pink/50'
+                ? 'text-black border-b-2 border-black'
+                : 'text-gray-500 hover:text-black'
             }`}
           >
             RU
           </button>
           <button
             onClick={() => setLanguage('en')}
-            className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
+            className={`px-3 py-1 text-sm font-medium transition-all duration-200 ${
               language === 'en'
-                ? 'bg-blush-pink text-white shadow-lg'
-                : 'text-gray-700 hover:bg-blush-pink/50'
+                ? 'text-black border-b-2 border-black'
+                : 'text-gray-500 hover:text-black'
             }`}
           >
             ENG
@@ -150,18 +116,18 @@ export const Header: React.FC = () => {
         </div>
         
         <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6">
-          <a href="#support" className="relative group font-medium text-gray-700 hover:text-peach transition-colors duration-200">
+          <a href="#support" className="text-black hover:text-gray-700 transition-colors duration-200">
             {t('nav.support')}
           </a>
-          <a href="#about" className="text-gray-700 hover:text-peach transition-colors duration-200">
+          <a href="#about" className="text-black hover:text-gray-700 transition-colors duration-200">
             {t('nav.about')}
           </a>
-          <a href="#articles" className="text-gray-700 hover:text-peach transition-colors duration-200">
+          <a href="#articles" className="text-black hover:text-gray-700 transition-colors duration-200">
             {t('nav.articles')}
           </a>
           <button 
             onClick={handleAuthAction}
-            className="px-4 lg:px-6 py-2 text-white rounded-full transition-all duration-200 transform hover:scale-105 shadow-lg text-sm lg:text-base flex items-center space-x-2 bg-gradient-to-r from-blush-pink to-peach hover:from-blush-pink/90 hover:to-peach/90 shadow-blush-pink/25"
+            className="px-4 lg:px-6 py-2 text-white bg-black hover:bg-gray-800 transition-colors duration-200 text-sm lg:text-base flex items-center space-x-2"
           >
             <span>{user ? t('logout') : t('login')}</span>
           </button>
@@ -169,7 +135,7 @@ export const Header: React.FC = () => {
 
         <button 
           onClick={toggleMobileMenu}
-          className="lg:hidden text-gray-700 hover:text-peach transition-colors"
+          className="lg:hidden text-black hover:text-gray-700 transition-colors"
         >
           {isMobileMenuOpen ? (
             <X className="w-6 h-6" />
@@ -181,42 +147,21 @@ export const Header: React.FC = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && ReactDOM.createPortal(
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:hidden z-[9999] pt-20">
-            <div className="absolute inset-0 bg-black/10 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)}></div>
-            <div className="relative bg-creamy-white/95 backdrop-blur-md border-t border-white/10 shadow-lg">
+            <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)}></div>
+            <div className="relative bg-white border-t border-gray-200">
               <nav className="px-4 py-6 space-y-4">
                 {/* Mobile Language Toggle */}
-                <div className="space-y-6 mb-4">
-                  {/* Mobile Atmosphere Toggle */}
-                  <div className="flex items-center justify-center space-x-3">
-                    <Music className={`w-4 h-4 transition-colors duration-300 ${isAtmosphereMode ? 'text-peach' : 'text-gray-400'}`} />
-                    <span className="text-sm text-gray-700">{t('interactive.atmosphereMode')}</span>
-                    <button
-                      type="button"
-                      onClick={() => setIsAtmosphereMode(!isAtmosphereMode)}
-                      className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-peach/50 ${
-                        isAtmosphereMode ? 'bg-blush-pink' : 'bg-gray-300'
-                      }`}
-                    >
-                      <span
-                        className={`inline-block h-3 w-3 transform rounded-full bg-white transition-transform duration-300 ${
-                          isAtmosphereMode ? 'translate-x-5' : 'translate-x-1'
-                        }`}
-                      />
-                    </button>
-                  </div>
-                  
-                  {/* Mobile Language Toggle */}
-                  <div className="flex items-center justify-center space-x-2 bg-creamy-white/50 backdrop-blur-sm border border-white/10 rounded-full p-1">
-                  <Globe className="w-4 h-4 text-gray-400 ml-2" />
+                <div className="flex items-center justify-center space-x-2">
+                  <Globe className="w-4 h-4 text-gray-500 ml-2" />
                   <button
                     onClick={() => {
                       setLanguage('ru');
                       setIsMobileMenuOpen(false);
                     }}
-                    className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
+                    className={`px-3 py-1 text-sm font-medium transition-all duration-200 ${
                       language === 'ru'
-                        ? 'bg-blush-pink text-white shadow-lg'
-                        : 'text-gray-700 hover:bg-blush-pink/50'
+                        ? 'text-black border-b-2 border-black'
+                        : 'text-gray-500 hover:text-black'
                     }`}
                   >
                     RU
@@ -226,34 +171,33 @@ export const Header: React.FC = () => {
                       setLanguage('en');
                       setIsMobileMenuOpen(false);
                     }}
-                    className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
+                    className={`px-3 py-1 text-sm font-medium transition-all duration-200 ${
                       language === 'en'
-                        ? 'bg-blush-pink text-white shadow-lg'
-                        : 'text-gray-700 hover:bg-blush-pink/50'
+                        ? 'text-black border-b-2 border-black'
+                        : 'text-gray-500 hover:text-black'
                     }`}
                   >
                     ENG
                   </button>
                 </div>
-                </div>
                 
                 <a 
                   href="#support"
-                  className="block py-2 font-medium text-gray-700 hover:text-peach transition-colors duration-200"
+                  className="block text-center py-2 font-medium text-black hover:text-gray-700 transition-colors duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {t('nav.support')}
                 </a>
                 <a 
                   href="#about" 
-                  className="block text-gray-700 hover:text-peach transition-colors duration-200 py-2"
+                  className="block text-center py-2 text-black hover:text-gray-700 transition-colors duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {t('nav.about')}
                 </a>
                 <a 
                   href="#articles" 
-                  className="block text-gray-700 hover:text-peach transition-colors duration-200 py-2"
+                  className="block text-center py-2 text-black hover:text-gray-700 transition-colors duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {t('nav.articles')}
@@ -263,7 +207,7 @@ export const Header: React.FC = () => {
                     handleAuthAction();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="w-full px-6 py-3 text-white rounded-full transition-all duration-200 transform hover:scale-105 shadow-lg text-base flex items-center justify-center space-x-2 bg-gradient-to-r from-blush-pink to-peach hover:from-blush-pink/90 hover:to-peach/90 shadow-blush-pink/25 mt-4"
+                  className="w-full px-6 py-3 text-white bg-black hover:bg-gray-800 transition-colors duration-200 text-base flex items-center justify-center space-x-2"
                 >
                   <span>{user ? t('logout') : t('login')}</span>
                 </button>
