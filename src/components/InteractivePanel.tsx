@@ -348,10 +348,10 @@ export const InteractivePanel: React.FC = () => {
       <section className="relative z-10 px-4 py-8 sm:py-12 lg:py-16 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="max-w-4xl mx-auto">
-            <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-6 lg:p-8">
+            <div className="backdrop-blur-md bg-rose-900/10 border border-rose-200/10 rounded-2xl p-4 sm:p-6 lg:p-8">
               <div className="flex items-center justify-center space-x-2">
                 <Loader2 className="w-5 h-5 animate-spin text-purple-400" />
-                <span className="text-slate-300">Загрузка...</span>
+                <span className="text-rose-200">Загрузка...</span>
               </div>
             </div>
           </div>
@@ -366,7 +366,7 @@ export const InteractivePanel: React.FC = () => {
         {/* Input Panel */}
         <div className="max-w-4xl mx-auto">
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className={`backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-6 lg:p-8 relative overflow-hidden ${meowMode ? 'meow-mode-active' : ''}`}>
+            <div className={`backdrop-blur-md bg-rose-900/10 border border-rose-200/10 rounded-2xl p-4 sm:p-6 lg:p-8 relative overflow-hidden ${meowMode ? 'meow-mode-active' : ''}`}>
               {/* Мяу-режим огонек */}
               {meowMode && (
                 <div className="absolute inset-0 pointer-events-none">
@@ -381,21 +381,21 @@ export const InteractivePanel: React.FC = () => {
               {/* Тумблер Мяу-режима */}
               <div className="flex items-center justify-center mb-4 sm:mb-6">
                 <div className="flex items-center space-x-3">
-                  <Cat className={`w-5 h-5 transition-colors duration-300 ${meowMode ? 'text-sky-400' : 'text-slate-400'}`} />
-                  <span className="text-sm text-slate-300">{t('interactive.meowMode')}</span>
+                  <Cat className={`w-5 h-5 transition-colors duration-300 ${meowMode ? 'text-amber-400' : 'text-rose-200'}`} />
+                  <span className="text-sm text-rose-200">{t('interactive.meowMode')}</span>
                   <div className="relative">
                     <button
                       type="button"
                       onMouseEnter={() => setShowMeowTooltip(true)}
                       onMouseLeave={() => setShowMeowTooltip(false)}
-                      className="text-slate-400 hover:text-slate-300 transition-colors duration-200"
+                      className="text-rose-200 hover:text-white transition-colors duration-200"
                     >
                       <HelpCircle className="w-4 h-4" />
                     </button>
                     {showMeowTooltip && (
-                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-slate-800 border border-slate-600 rounded-lg text-xs text-slate-200 whitespace-nowrap shadow-lg z-50">
+                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-rose-900/80 border border-rose-700/50 rounded-lg text-xs text-rose-100 whitespace-nowrap shadow-lg z-50">
                         {t('interactive.meowModeTooltip')}
-                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-800"></div>
+                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-rose-900/80"></div>
                       </div>
                     )}
                   </div>
@@ -407,8 +407,8 @@ export const InteractivePanel: React.FC = () => {
                       setResult(''); // Очищаем результат
                       setSelectedCards([]); // Очищаем выбранные карты
                     }}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-sky-400/50 ${
-                      meowMode ? 'bg-sky-500' : 'bg-slate-600'
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-amber-400/50 ${
+                      meowMode ? 'bg-amber-500' : 'bg-slate-600'
                     }`}
                   >
                     <span
@@ -434,12 +434,12 @@ export const InteractivePanel: React.FC = () => {
                 {services.map((service) => {
                   const Icon = service.icon;
                   const colors = {
-                    dreams: 'from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600',
+                    dreams: 'from-purple-500 to-rose-500 hover:from-purple-600 hover:to-rose-600',
                     horoscope: 'from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600',
-                    tarot: 'from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600',
+                    tarot: 'from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600',
                     numerology: 'from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600',
                     oracle: 'from-violet-500 to-purple-500 hover:from-violet-600 hover:to-purple-600',
-                    regression: 'from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600'
+                    regression: 'from-rose-500 to-fuchsia-500 hover:from-rose-600 hover:to-fuchsia-600'
                   };
                   
                   return (
@@ -455,7 +455,7 @@ export const InteractivePanel: React.FC = () => {
                       className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 transform hover:scale-105 flex items-center space-x-1 sm:space-x-2 ${
                         selectedService === service.id
                           ? `bg-gradient-to-r ${colors[service.id as keyof typeof colors]} text-white shadow-lg`
-                          : 'bg-white/10 text-slate-300 hover:bg-white/20 hover:text-white'
+                          : 'bg-white/10 text-rose-200 hover:bg-white/20 hover:text-white'
                       }`}
                     >
                       <Icon className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -466,7 +466,7 @@ export const InteractivePanel: React.FC = () => {
               </div>
               
               <div className="space-y-4">
-                <p className="text-slate-400 text-center text-xs sm:text-sm mb-4 px-2">
+                <p className="text-rose-200 text-center text-xs sm:text-sm mb-4 px-2">
                   {t(currentService.descriptionKey)}
                 </p>
                 
@@ -474,26 +474,26 @@ export const InteractivePanel: React.FC = () => {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder={t(currentService.placeholderKey)}
-                  className="w-full h-24 sm:h-32 px-3 sm:px-4 py-2 sm:py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-400 resize-none focus:outline-none focus:ring-2 focus:ring-pink-400/50 focus:border-transparent backdrop-blur-sm text-sm sm:text-base"
+                  className="w-full h-24 sm:h-32 px-3 sm:px-4 py-2 sm:py-3 bg-rose-900/10 border border-rose-200/10 rounded-xl text-white placeholder-rose-300 resize-none focus:outline-none focus:ring-2 focus:ring-pink-400/50 focus:border-transparent backdrop-blur-sm text-sm sm:text-base"
                   disabled={isLoading}
                 />
                 
                 <button
                   type="submit"
                   disabled={!input.trim() || isLoading || remaining === 0}
-                  className="relative w-full py-3 sm:py-4 px-4 sm:px-6 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 text-white rounded-xl font-semibold text-base sm:text-lg disabled:opacity-50 disabled:cursor-not-allowed hover:from-purple-600 hover:via-pink-600 hover:to-blue-600 transition-all duration-200 transform hover:scale-[1.02] flex items-center justify-center space-x-2 shadow-lg shadow-pink-500/25 overflow-hidden group"
+                  className="relative w-full py-3 sm:py-4 px-4 sm:px-6 bg-gradient-to-r from-purple-500 via-rose-500 to-amber-500 text-white rounded-xl font-semibold text-base sm:text-lg disabled:opacity-50 disabled:cursor-not-allowed hover:from-purple-600 hover:via-rose-600 hover:to-amber-600 transition-all duration-200 transform hover:scale-[1.02] flex items-center justify-center space-x-2 shadow-lg shadow-rose-500/25 overflow-hidden group"
                 >
                   {/* Звёздная пыль эффект */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute top-2 left-4 w-1 h-1 bg-white rounded-full animate-pulse"></div>
                     <div className="absolute top-4 right-6 w-0.5 h-0.5 bg-yellow-300 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
                     <div className="absolute bottom-3 left-8 w-1.5 h-1.5 bg-pink-300 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-                    <div className="absolute top-6 left-1/3 w-0.5 h-0.5 bg-blue-300 rounded-full animate-ping" style={{ animationDelay: '1.5s' }}></div>
+                    <div className="absolute top-6 left-1/3 w-0.5 h-0.5 bg-rose-300 rounded-full animate-ping" style={{ animationDelay: '1.5s' }}></div>
                     <div className="absolute bottom-4 right-4 w-1 h-1 bg-purple-300 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
-                    <div className="absolute top-1/2 right-8 w-0.5 h-0.5 bg-emerald-300 rounded-full animate-ping" style={{ animationDelay: '0.3s' }}></div>
-                    <div className="absolute bottom-6 left-1/4 w-1 h-1 bg-cyan-300 rounded-full animate-pulse" style={{ animationDelay: '1.2s' }}></div>
+                    <div className="absolute top-1/2 right-8 w-0.5 h-0.5 bg-amber-300 rounded-full animate-ping" style={{ animationDelay: '0.3s' }}></div>
+                    <div className="absolute bottom-6 left-1/4 w-1 h-1 bg-purple-300 rounded-full animate-pulse" style={{ animationDelay: '1.2s' }}></div>
                     <div className="absolute top-3 right-1/3 w-0.5 h-0.5 bg-rose-300 rounded-full animate-ping" style={{ animationDelay: '0.8s' }}></div>
-                    <div className="absolute bottom-2 right-12 w-1.5 h-1.5 bg-indigo-300 rounded-full animate-pulse" style={{ animationDelay: '1.8s' }}></div>
+                    <div className="absolute bottom-2 right-12 w-1.5 h-1.5 bg-pink-300 rounded-full animate-pulse" style={{ animationDelay: '1.8s' }}></div>
                     <div className="absolute top-5 left-12 w-0.5 h-0.5 bg-amber-300 rounded-full animate-ping" style={{ animationDelay: '0.2s' }}></div>
                   </div>
                   
@@ -523,7 +523,7 @@ export const InteractivePanel: React.FC = () => {
 
           {/* Results */}
           {(isLoading || result || selectedCards.length > 0) && (
-            <div className="mt-6 sm:mt-8 backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-6 lg:p-8">
+            <div className="mt-6 sm:mt-8 backdrop-blur-md bg-rose-900/10 border border-rose-200/10 rounded-2xl p-4 sm:p-6 lg:p-8">
               <h4 className="text-lg sm:text-xl font-semibold text-white mb-4">{t('interactive.results.title')}</h4>
               
               {/* Отображение выбранных карт таро */}
@@ -550,7 +550,7 @@ export const InteractivePanel: React.FC = () => {
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-purple-900/60 via-transparent to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
-                        <p className="text-xs sm:text-sm text-slate-300 mt-2 font-medium">
+                        <p className="text-xs sm:text-sm text-rose-200 mt-2 font-medium">
                           {card.displayName}
                         </p>
                       </div>
@@ -561,14 +561,14 @@ export const InteractivePanel: React.FC = () => {
               
               {isLoading ? (
                 <div className="space-y-3">
-                  <div className="h-4 bg-gradient-to-r from-purple-400/20 via-pink-400/20 to-blue-400/20 rounded animate-pulse"></div>
-                  <div className="h-4 bg-gradient-to-r from-blue-400/20 via-emerald-400/20 to-purple-400/20 rounded animate-pulse"></div>
-                  <div className="h-4 bg-gradient-to-r from-pink-400/20 via-purple-400/20 to-blue-400/20 rounded w-3/4 animate-pulse"></div>
+                  <div className="h-4 bg-gradient-to-r from-purple-400/20 via-rose-400/20 to-amber-400/20 rounded animate-pulse"></div>
+                  <div className="h-4 bg-gradient-to-r from-amber-400/20 via-purple-400/20 to-rose-400/20 rounded animate-pulse"></div>
+                  <div className="h-4 bg-gradient-to-r from-rose-400/20 via-purple-400/20 to-amber-400/20 rounded w-3/4 animate-pulse"></div>
                 </div>
               ) : result && (
                 <>
                   <div 
-                    className="text-slate-300 leading-relaxed text-sm sm:text-base prose prose-invert max-w-none"
+                    className="text-rose-200 leading-relaxed text-sm sm:text-base prose prose-invert max-w-none"
                     dangerouslySetInnerHTML={{ __html: result }}
                   />
                   
@@ -576,7 +576,7 @@ export const InteractivePanel: React.FC = () => {
                   <div className="flex justify-center mt-4">
                     <button
                       onClick={handleCopyText}
-                      className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-slate-300 hover:text-white transition-all duration-200 flex items-center space-x-2 text-sm"
+                      className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-rose-200/20 rounded-lg text-rose-200 hover:text-white transition-all duration-200 flex items-center space-x-2 text-sm"
                     >
                       {copySuccess ? (
                         <>

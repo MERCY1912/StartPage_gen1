@@ -13,9 +13,9 @@ function App() {
   return (
     <LanguageProvider>
       <AuthProvider>
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+        <div className="min-h-screen bg-gradient-to-br from-purple-900 via-rose-900 to-amber-900 relative overflow-hidden">
           {/* Background gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-slate-900/60 to-black/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-rose-900/30 to-amber-900/20"></div>
           
           {/* Particle animation background */}
           <ParticleBackground />
