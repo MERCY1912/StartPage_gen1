@@ -7,8 +7,15 @@ export default {
         'xs': '475px',
       },
       fontFamily: {
+        'sans': ['Quicksand', 'sans-serif'],
         'serif': ['Playfair Display', 'serif'],
-        'sans': ['Inter', 'sans-serif'],
+      },
+      colors: {
+        'blush-pink': '#F1C4D9',
+        'lavender': '#E6E6FA',
+        'soft-mint': '#B2E2D8',
+        'creamy-white': '#F5F5DC',
+        'peach': '#FFDAB9',
       },
       animation: {
         'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',

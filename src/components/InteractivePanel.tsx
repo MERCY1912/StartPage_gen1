@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Moon, Star, Zap, Send, Loader2, Cat, Copy, Check, CalendarDays, MessageSquareQuote, History, HelpCircle } from 'lucide-react';
+import { Heart, Send, Loader2, Copy, Check, HelpCircle, MessageSquare, BookOpen, Smile, Sparkles, User, Feather, Wind } from 'lucide-react';
 import { UsageTracker, UsageData } from '../utils/usageTracker';
 import { useAuth } from '../contexts/AuthContext';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -17,52 +17,59 @@ interface Service {
 
 const getServices = (): Service[] => [
   {
-    id: 'dreams',
-    icon: Moon,
-    titleKey: 'interactive.services.dreams.title',
-    descriptionKey: 'interactive.services.dreams.description',
-    placeholderKey: 'interactive.services.dreams.placeholder'
+    id: 'talk',
+    icon: MessageSquare,
+    titleKey: 'interactive.services.talk.title',
+    descriptionKey: 'interactive.services.talk.description',
+    placeholderKey: 'interactive.services.talk.placeholder'
   },
   {
-    id: 'horoscope',
-    icon: Star,
-    titleKey: 'interactive.services.horoscope.title',
-    descriptionKey: 'interactive.services.horoscope.description',
-    placeholderKey: 'interactive.services.horoscope.placeholder'
+    id: 'advice',
+    icon: HelpCircle,
+    titleKey: 'interactive.services.advice.title',
+    descriptionKey: 'interactive.services.advice.description',
+    placeholderKey: 'interactive.services.advice.placeholder'
   },
   {
-    id: 'tarot',
-    icon: Zap,
-    titleKey: 'interactive.services.tarot.title',
-    descriptionKey: 'interactive.services.tarot.description',
-    placeholderKey: 'interactive.services.tarot.placeholder'
+    id: 'journal',
+    icon: BookOpen,
+    titleKey: 'interactive.services.journal.title',
+    descriptionKey: 'interactive.services.journal.description',
+    placeholderKey: 'interactive.services.journal.placeholder'
   },
   {
-    id: 'numerology',
-    icon: CalendarDays,
-    titleKey: 'interactive.services.numerology.title',
-    descriptionKey: 'interactive.services.numerology.description',
-    placeholderKey: 'interactive.services.numerology.placeholder'
+    id: 'compliment',
+    icon: Smile,
+    titleKey: 'interactive.services.compliment.title',
+    descriptionKey: 'interactive.services.compliment.description',
+    placeholderKey: 'interactive.services.compliment.placeholder'
+  },
+  {
+    id: 'style',
+    icon: User,
+    titleKey: 'interactive.services.style.title',
+    descriptionKey: 'interactive.services.style.description',
+    placeholderKey: 'interactive.services.style.placeholder'
+  },
+  {
+    id: 'soft',
+    icon: Feather,
+    titleKey: 'interactive.services.soft.title',
+    descriptionKey: 'interactive.services.soft.description',
+    placeholderKey: 'interactive.services.soft.placeholder'
   },
   {
     id: 'oracle',
-    icon: MessageSquareQuote,
+    icon: Sparkles,
     titleKey: 'interactive.services.oracle.title',
     descriptionKey: 'interactive.services.oracle.description',
     placeholderKey: 'interactive.services.oracle.placeholder'
-  },
-  {
-    id: 'regression',
-    icon: History,
-    titleKey: 'interactive.services.regression.title',
-    descriptionKey: 'interactive.services.regression.description',
-    placeholderKey: 'interactive.services.regression.placeholder'
   }
 ];
 
 export const InteractivePanel: React.FC = () => {
   const { t } = useLanguage();
-  const [selectedService, setSelectedService] = useState<string>('dreams');
+  const [selectedService, setSelectedService] = useState<string>('talk');
   const [input, setInput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [result, setResult] = useState<string>('');
@@ -133,15 +140,16 @@ export const InteractivePanel: React.FC = () => {
 
   const getWebhookUrl = (serviceId: string, meowModeEnabled: boolean = false): string => {
     const webhookUrls = {
-     dreams: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_DREAMS_MEOW : import.meta.env.VITE_N8N_WEBHOOK_DREAMS,
-     horoscope: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_HOROSCOPE_MEOW : import.meta.env.VITE_N8N_WEBHOOK_HOROSCOPE,
-     tarot: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_TAROT_MEOW : import.meta.env.VITE_N8N_WEBHOOK_TAROT,
-     numerology: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_NUMEROLOGY_MEOW : import.meta.env.VITE_N8N_WEBHOOK_NUMEROLOGY,
-     oracle: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_ORACLE_MEOW : import.meta.env.VITE_N8N_WEBHOOK_ORACLE,
-     regression: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_REGRESSION_MEOW : import.meta.env.VITE_N8N_WEBHOOK_REGRESSION,
+      talk: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_TALK_MEOW : import.meta.env.VITE_N8N_WEBHOOK_TALK,
+      advice: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_ADVICE_MEOW : import.meta.env.VITE_N8N_WEBHOOK_ADVICE,
+      journal: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_JOURNAL_MEOW : import.meta.env.VITE_N8N_WEBHOOK_JOURNAL,
+      compliment: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_COMPLIMENT_MEOW : import.meta.env.VITE_N8N_WEBHOOK_COMPLIMENT,
+      style: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_STYLE_MEOW : import.meta.env.VITE_N8N_WEBHOOK_STYLE,
+      soft: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_SOFT_MEOW : import.meta.env.VITE_N8N_WEBHOOK_SOFT,
+      oracle: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_ORACLE_MEOW : import.meta.env.VITE_N8N_WEBHOOK_ORACLE,
     };
     
-    return webhookUrls[serviceId as keyof typeof webhookUrls] || webhookUrls.dreams;
+    return webhookUrls[serviceId as keyof typeof webhookUrls] || webhookUrls.talk;
   };
 
   const sendToN8N = async (serviceId: string, userInput: string, tarotCardNames?: string[], meowModeEnabled?: boolean): Promise<string> => {
@@ -348,10 +356,10 @@ export const InteractivePanel: React.FC = () => {
       <section className="relative z-10 px-4 py-8 sm:py-12 lg:py-16 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="max-w-4xl mx-auto">
-            <div className="backdrop-blur-md bg-rose-900/10 border border-rose-200/10 rounded-2xl p-4 sm:p-6 lg:p-8">
+            <div className="bg-creamy-white/50 backdrop-blur-md border border-white/20 rounded-2xl p-4 sm:p-6 lg:p-8">
               <div className="flex items-center justify-center space-x-2">
-                <Loader2 className="w-5 h-5 animate-spin text-purple-400" />
-                <span className="text-rose-200">Загрузка...</span>
+                <Loader2 className="w-5 h-5 animate-spin text-blush-pink" />
+                <span className="text-gray-600">Loading...</span>
               </div>
             </div>
           </div>
@@ -366,36 +374,36 @@ export const InteractivePanel: React.FC = () => {
         {/* Input Panel */}
         <div className="max-w-4xl mx-auto">
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className={`backdrop-blur-md bg-rose-900/10 border border-rose-200/10 rounded-2xl p-4 sm:p-6 lg:p-8 relative overflow-hidden ${meowMode ? 'meow-mode-active' : ''}`}>
-              {/* Мяу-режим огонек */}
+            <div className={`bg-creamy-white/50 backdrop-blur-md border border-white/20 rounded-2xl p-4 sm:p-6 lg:p-8 relative overflow-hidden shadow-lg ${meowMode ? 'soft-mode-active' : ''}`}>
+              {/* Soft-mode sparkle */}
               {meowMode && (
                 <div className="absolute inset-0 pointer-events-none">
-                  <div className="meow-light"></div>
+                  <div className="soft-mode-light"></div>
                 </div>
               )}
               
-              <h3 className="text-xl sm:text-2xl font-serif font-semibold text-white mb-4 sm:mb-6 text-center">
+              <h3 className="text-xl sm:text-2xl font-serif font-semibold text-gray-700 mb-4 sm:mb-6 text-center">
                 {t('interactive.title')}
               </h3>
               
-              {/* Тумблер Мяу-режима */}
+              {/* Soft Mode Toggle */}
               <div className="flex items-center justify-center mb-4 sm:mb-6">
                 <div className="flex items-center space-x-3">
-                  <Cat className={`w-5 h-5 transition-colors duration-300 ${meowMode ? 'text-amber-400' : 'text-rose-200'}`} />
-                  <span className="text-sm text-rose-200">{t('interactive.meowMode')}</span>
+                  <Feather className={`w-5 h-5 transition-colors duration-300 ${meowMode ? 'text-blush-pink' : 'text-gray-400'}`} />
+                  <span className="text-sm text-gray-600">{t('interactive.meowMode')}</span>
                   <div className="relative">
                     <button
                       type="button"
                       onMouseEnter={() => setShowMeowTooltip(true)}
                       onMouseLeave={() => setShowMeowTooltip(false)}
-                      className="text-rose-200 hover:text-white transition-colors duration-200"
+                      className="text-gray-400 hover:text-gray-600 transition-colors duration-200"
                     >
                       <HelpCircle className="w-4 h-4" />
                     </button>
                     {showMeowTooltip && (
-                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-rose-900/80 border border-rose-700/50 rounded-lg text-xs text-rose-100 whitespace-nowrap shadow-lg z-50">
+                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-creamy-white border border-gray-200 rounded-lg text-xs text-gray-700 whitespace-nowrap shadow-lg z-50">
                         {t('interactive.meowModeTooltip')}
-                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-rose-900/80"></div>
+                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-creamy-white"></div>
                       </div>
                     )}
                   </div>
@@ -403,12 +411,12 @@ export const InteractivePanel: React.FC = () => {
                     type="button"
                     onClick={() => {
                       setMeowMode(!meowMode);
-                      setInput(''); // Очищаем поле ввода при переключении мяу-режима
-                      setResult(''); // Очищаем результат
-                      setSelectedCards([]); // Очищаем выбранные карты
+                      setInput('');
+                      setResult('');
+                      setSelectedCards([]);
                     }}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-amber-400/50 ${
-                      meowMode ? 'bg-amber-500' : 'bg-slate-600'
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blush-pink/50 ${
+                      meowMode ? 'bg-blush-pink' : 'bg-gray-300'
                     }`}
                   >
                     <span
@@ -420,7 +428,7 @@ export const InteractivePanel: React.FC = () => {
                 </div>
               </div>
               
-              {/* Индикатор использования */}
+              {/* Usage Indicator */}
               <div className="mb-4 sm:mb-6">
                 <UsageIndicator 
                   usage={usage}
@@ -434,12 +442,13 @@ export const InteractivePanel: React.FC = () => {
                 {services.map((service) => {
                   const Icon = service.icon;
                   const colors = {
-                    dreams: 'from-purple-500 to-rose-500 hover:from-purple-600 hover:to-rose-600',
-                    horoscope: 'from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600',
-                    tarot: 'from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600',
-                    numerology: 'from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600',
-                    oracle: 'from-violet-500 to-purple-500 hover:from-violet-600 hover:to-purple-600',
-                    regression: 'from-rose-500 to-fuchsia-500 hover:from-rose-600 hover:to-fuchsia-600'
+                    talk: 'from-blush-pink to-peach',
+                    advice: 'from-soft-mint to-peach',
+                    journal: 'from-lavender to-blush-pink',
+                    compliment: 'from-peach to-blush-pink',
+                    style: 'from-blush-pink to-lavender',
+                    soft: 'from-peach to-lavender',
+                    oracle: 'from-lavender to-soft-mint'
                   };
                   
                   return (
@@ -448,14 +457,14 @@ export const InteractivePanel: React.FC = () => {
                       type="button"
                       onClick={() => {
                         setSelectedService(service.id);
-                        setInput(''); // Очищаем поле ввода при смене сервиса
-                        setResult(''); // Очищаем результат
-                        setSelectedCards([]); // Очищаем выбранные карты
+                        setInput('');
+                        setResult('');
+                        setSelectedCards([]);
                       }}
                       className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 transform hover:scale-105 flex items-center space-x-1 sm:space-x-2 ${
                         selectedService === service.id
                           ? `bg-gradient-to-r ${colors[service.id as keyof typeof colors]} text-white shadow-lg`
-                          : 'bg-white/10 text-rose-200 hover:bg-white/20 hover:text-white'
+                          : 'bg-white/50 text-gray-600 hover:bg-white/70 hover:text-gray-800'
                       }`}
                     >
                       <Icon className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -466,7 +475,7 @@ export const InteractivePanel: React.FC = () => {
               </div>
               
               <div className="space-y-4">
-                <p className="text-rose-200 text-center text-xs sm:text-sm mb-4 px-2">
+                <p className="text-gray-600 text-center text-xs sm:text-sm mb-4 px-2">
                   {t(currentService.descriptionKey)}
                 </p>
                 
@@ -474,27 +483,20 @@ export const InteractivePanel: React.FC = () => {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder={t(currentService.placeholderKey)}
-                  className="w-full h-24 sm:h-32 px-3 sm:px-4 py-2 sm:py-3 bg-rose-900/10 border border-rose-200/10 rounded-xl text-white placeholder-rose-300 resize-none focus:outline-none focus:ring-2 focus:ring-pink-400/50 focus:border-transparent backdrop-blur-sm text-sm sm:text-base"
+                  className="w-full h-24 sm:h-32 px-3 sm:px-4 py-2 sm:py-3 bg-white/50 border border-white/20 rounded-xl text-gray-700 placeholder-gray-500 resize-none focus:outline-none focus:ring-2 focus:ring-blush-pink/50 focus:border-transparent backdrop-blur-sm text-sm sm:text-base"
                   disabled={isLoading}
                 />
                 
                 <button
                   type="submit"
                   disabled={!input.trim() || isLoading || remaining === 0}
-                  className="relative w-full py-3 sm:py-4 px-4 sm:px-6 bg-gradient-to-r from-purple-500 via-rose-500 to-amber-500 text-white rounded-xl font-semibold text-base sm:text-lg disabled:opacity-50 disabled:cursor-not-allowed hover:from-purple-600 hover:via-rose-600 hover:to-amber-600 transition-all duration-200 transform hover:scale-[1.02] flex items-center justify-center space-x-2 shadow-lg shadow-rose-500/25 overflow-hidden group"
+                  className="relative w-full py-3 sm:py-4 px-4 sm:px-6 bg-gradient-to-r from-blush-pink to-peach text-white rounded-xl font-semibold text-base sm:text-lg disabled:opacity-50 disabled:cursor-not-allowed hover:from-blush-pink/90 hover:to-peach/90 transition-all duration-200 transform hover:scale-[1.02] flex items-center justify-center space-x-2 shadow-lg shadow-blush-pink/25 overflow-hidden group"
                 >
-                  {/* Звёздная пыль эффект */}
+                  {/* Sparkle effect */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute top-2 left-4 w-1 h-1 bg-white rounded-full animate-pulse"></div>
                     <div className="absolute top-4 right-6 w-0.5 h-0.5 bg-yellow-300 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
                     <div className="absolute bottom-3 left-8 w-1.5 h-1.5 bg-pink-300 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-                    <div className="absolute top-6 left-1/3 w-0.5 h-0.5 bg-rose-300 rounded-full animate-ping" style={{ animationDelay: '1.5s' }}></div>
-                    <div className="absolute bottom-4 right-4 w-1 h-1 bg-purple-300 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
-                    <div className="absolute top-1/2 right-8 w-0.5 h-0.5 bg-amber-300 rounded-full animate-ping" style={{ animationDelay: '0.3s' }}></div>
-                    <div className="absolute bottom-6 left-1/4 w-1 h-1 bg-purple-300 rounded-full animate-pulse" style={{ animationDelay: '1.2s' }}></div>
-                    <div className="absolute top-3 right-1/3 w-0.5 h-0.5 bg-rose-300 rounded-full animate-ping" style={{ animationDelay: '0.8s' }}></div>
-                    <div className="absolute bottom-2 right-12 w-1.5 h-1.5 bg-pink-300 rounded-full animate-pulse" style={{ animationDelay: '1.8s' }}></div>
-                    <div className="absolute top-5 left-12 w-0.5 h-0.5 bg-amber-300 rounded-full animate-ping" style={{ animationDelay: '0.2s' }}></div>
                   </div>
                   
                   {isLoading ? (
@@ -523,13 +525,12 @@ export const InteractivePanel: React.FC = () => {
 
           {/* Results */}
           {(isLoading || result || selectedCards.length > 0) && (
-            <div className="mt-6 sm:mt-8 backdrop-blur-md bg-rose-900/10 border border-rose-200/10 rounded-2xl p-4 sm:p-6 lg:p-8">
-              <h4 className="text-lg sm:text-xl font-semibold text-white mb-4">{t('interactive.results.title')}</h4>
+            <div className="mt-6 sm:mt-8 bg-creamy-white/50 backdrop-blur-md border border-white/20 rounded-2xl p-4 sm:p-6 lg:p-8">
+              <h4 className="text-lg sm:text-xl font-semibold text-gray-700 mb-4">{t('interactive.results.title')}</h4>
               
-              {/* Отображение выбранных карт таро */}
               {selectedCards.length > 0 && (
                 <div className="mb-6">
-                  <h5 className="text-md font-medium text-purple-300 mb-3">{t('interactive.results.selectedCards')}</h5>
+                  <h5 className="text-md font-medium text-blush-pink mb-3">{t('interactive.results.selectedCards')}</h5>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     {selectedCards.map((card, index) => (
                       <div 
@@ -543,14 +544,13 @@ export const InteractivePanel: React.FC = () => {
                             alt={card.displayName}
                             className="w-full max-w-[250px] mx-auto rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xl"
                             onError={(e) => {
-                              // Fallback если изображение не загрузилось
                               const target = e.target as HTMLImageElement;
-                              target.src = `https://via.placeholder.com/200x350/4c1d95/ffffff?text=${encodeURIComponent(card.displayName)}`;
+                              target.src = `https://via.placeholder.com/200x350/F1C4D9/ffffff?text=${encodeURIComponent(card.displayName)}`;
                             }}
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-purple-900/60 via-transparent to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="absolute inset-0 bg-gradient-to-t from-blush-pink/60 via-transparent to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
-                        <p className="text-xs sm:text-sm text-rose-200 mt-2 font-medium">
+                        <p className="text-xs sm:text-sm text-gray-600 mt-2 font-medium">
                           {card.displayName}
                         </p>
                       </div>
@@ -561,22 +561,21 @@ export const InteractivePanel: React.FC = () => {
               
               {isLoading ? (
                 <div className="space-y-3">
-                  <div className="h-4 bg-gradient-to-r from-purple-400/20 via-rose-400/20 to-amber-400/20 rounded animate-pulse"></div>
-                  <div className="h-4 bg-gradient-to-r from-amber-400/20 via-purple-400/20 to-rose-400/20 rounded animate-pulse"></div>
-                  <div className="h-4 bg-gradient-to-r from-rose-400/20 via-purple-400/20 to-amber-400/20 rounded w-3/4 animate-pulse"></div>
+                  <div className="h-4 bg-blush-pink/20 rounded animate-pulse"></div>
+                  <div className="h-4 bg-lavender/20 rounded animate-pulse"></div>
+                  <div className="h-4 bg-peach/20 rounded w-3/4 animate-pulse"></div>
                 </div>
               ) : result && (
                 <>
                   <div 
-                    className="text-rose-200 leading-relaxed text-sm sm:text-base prose prose-invert max-w-none"
+                    className="text-gray-600 leading-relaxed text-sm sm:text-base prose max-w-none"
                     dangerouslySetInnerHTML={{ __html: result }}
                   />
                   
-                  {/* Кнопка копирования текста внизу сообщения */}
                   <div className="flex justify-center mt-4">
                     <button
                       onClick={handleCopyText}
-                      className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-rose-200/20 rounded-lg text-rose-200 hover:text-white transition-all duration-200 flex items-center space-x-2 text-sm"
+                      className="px-4 py-2 bg-white/50 hover:bg-white/70 border border-gray-200 rounded-lg text-gray-600 hover:text-gray-800 transition-all duration-200 flex items-center space-x-2 text-sm"
                     >
                       {copySuccess ? (
                         <>
