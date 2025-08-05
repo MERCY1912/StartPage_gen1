@@ -3,11 +3,10 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Fredoka One', sans-serif;
   color: #111827;
 }
 
-/* Prose styles for AI responses */
 .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
   color: #111827;
   font-weight: 600;
@@ -44,7 +43,7 @@ body {
 }
 
 .prose blockquote {
-  border-left: 4px solid #d1d5db;
+  border-left: 4px solid #FFC1CC;
   padding-left: 1em;
   margin: 1em 0;
   font-style: italic;
@@ -52,7 +51,7 @@ body {
 }
 
 .prose code {
-  background-color: #f3f4f6;
+  background-color: #E6E6FA;
   padding: 0.2em 0.4em;
   border-radius: 0.25em;
   font-size: 0.9em;
@@ -60,7 +59,7 @@ body {
 }
 
 .prose pre {
-  background-color: #f3f4f6;
+  background-color: #E6E6FA;
   padding: 1em;
   border-radius: 0.5em;
   overflow-x: auto;
@@ -73,16 +72,16 @@ body {
 }
 
 .prose a {
-  color: #3b82f6;
+  color: #BF40BF;
   text-decoration: underline;
 }
 
 .prose a:hover {
-  color: #2563eb;
+  color: #FFC1CC;
 }
 
 .prose hr {
   border: none;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid #FFC1CC;
   margin: 2em 0;
 }

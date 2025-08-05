@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Moon, Star, Zap, Send, Loader2, Cat, Copy, Check, CalendarDays, MessageSquareQuote, History, HelpCircle } from 'lucide-react';
+import { Send, Loader2, Copy, Check, HelpCircle, MessageSquare, BookOpen, Smile, Sparkles, User, Feather, Wind, Heart, Brain, ShoppingBag, Coffee, Star } from 'lucide-react';
 import { UsageTracker, UsageData } from '../utils/usageTracker';
 import { useAuth } from '../contexts/AuthContext';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -17,52 +17,52 @@ interface Service {
 
 const getServices = (): Service[] => [
   {
-    id: 'dreams',
-    icon: Moon,
-    titleKey: 'interactive.services.dreams.title',
-    descriptionKey: 'interactive.services.dreams.description',
-    placeholderKey: 'interactive.services.dreams.placeholder'
-  },
-  {
-    id: 'horoscope',
+    id: 'daily_boost',
     icon: Star,
-    titleKey: 'interactive.services.horoscope.title',
-    descriptionKey: 'interactive.services.horoscope.description',
-    placeholderKey: 'interactive.services.horoscope.placeholder'
+    titleKey: 'interactive.services.daily_boost.title',
+    descriptionKey: 'interactive.services.daily_boost.description',
+    placeholderKey: 'interactive.services.daily_boost.placeholder'
   },
   {
-    id: 'tarot',
-    icon: Zap,
-    titleKey: 'interactive.services.tarot.title',
-    descriptionKey: 'interactive.services.tarot.description',
-    placeholderKey: 'interactive.services.tarot.placeholder'
+    id: 'ask_anything',
+    icon: Brain,
+    titleKey: 'interactive.services.ask_anything.title',
+    descriptionKey: 'interactive.services.ask_anything.description',
+    placeholderKey: 'interactive.services.ask_anything.placeholder'
   },
   {
-    id: 'numerology',
-    icon: CalendarDays,
-    titleKey: 'interactive.services.numerology.title',
-    descriptionKey: 'interactive.services.numerology.description',
-    placeholderKey: 'interactive.services.numerology.placeholder'
+    id: 'style_guide',
+    icon: ShoppingBag,
+    titleKey: 'interactive.services.style_guide.title',
+    descriptionKey: 'interactive.services.style_guide.description',
+    placeholderKey: 'interactive.services.style_guide.placeholder'
   },
   {
-    id: 'oracle',
-    icon: MessageSquareQuote,
-    titleKey: 'interactive.services.oracle.title',
-    descriptionKey: 'interactive.services.oracle.description',
-    placeholderKey: 'interactive.services.oracle.placeholder'
+    id: 'heart_talk',
+    icon: Heart,
+    titleKey: 'interactive.services.heart_talk.title',
+    descriptionKey: 'interactive.services.heart_talk.description',
+    placeholderKey: 'interactive.services.heart_talk.placeholder'
   },
   {
-    id: 'regression',
-    icon: History,
-    titleKey: 'interactive.services.regression.title',
-    descriptionKey: 'interactive.services.regression.description',
-    placeholderKey: 'interactive.services.regression.placeholder'
+    id: 'glow_up_plan',
+    icon: Sparkles,
+    titleKey: 'interactive.services.glow_up_plan.title',
+    descriptionKey: 'interactive.services.glow_up_plan.description',
+    placeholderKey: 'interactive.services.glow_up_plan.placeholder'
+  },
+  {
+    id: 'tea_gossip',
+    icon: Coffee,
+    titleKey: 'interactive.services.tea_gossip.title',
+    descriptionKey: 'interactive.services.tea_gossip.description',
+    placeholderKey: 'interactive.services.tea_gossip.placeholder'
   }
 ];
 
 export const InteractivePanel: React.FC = () => {
   const { t } = useLanguage();
-  const [selectedService, setSelectedService] = useState<string>('dreams');
+  const [selectedService, setSelectedService] = useState<string>('daily_boost');
   const [input, setInput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [result, setResult] = useState<string>('');
@@ -133,15 +133,15 @@ export const InteractivePanel: React.FC = () => {
 
   const getWebhookUrl = (serviceId: string, meowModeEnabled: boolean = false): string => {
     const webhookUrls = {
-     dreams: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_DREAMS_MEOW : import.meta.env.VITE_N8N_WEBHOOK_DREAMS,
-     horoscope: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_HOROSCOPE_MEOW : import.meta.env.VITE_N8N_WEBHOOK_HOROSCOPE,
-     tarot: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_TAROT_MEOW : import.meta.env.VITE_N8N_WEBHOOK_TAROT,
-     numerology: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_NUMEROLOGY_MEOW : import.meta.env.VITE_N8N_WEBHOOK_NUMEROLOGY,
-     oracle: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_ORACLE_MEOW : import.meta.env.VITE_N8N_WEBHOOK_ORACLE,
-     regression: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_REGRESSION_MEOW : import.meta.env.VITE_N8N_WEBHOOK_REGRESSION,
+      daily_boost: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_DAILY_BOOST_MEOW : import.meta.env.VITE_N8N_WEBHOOK_DAILY_BOOST,
+      ask_anything: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_ASK_ANYTHING_MEOW : import.meta.env.VITE_N8N_WEBHOOK_ASK_ANYTHING,
+      style_guide: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_STYLE_GUIDE_MEOW : import.meta.env.VITE_N8N_WEBHOOK_STYLE_GUIDE,
+      heart_talk: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_HEART_TALK_MEOW : import.meta.env.VITE_N8N_WEBHOOK_HEART_TALK,
+      glow_up_plan: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_GLOW_UP_PLAN_MEOW : import.meta.env.VITE_N8N_WEBHOOK_GLOW_UP_PLAN,
+      tea_gossip: meowModeEnabled ? import.meta.env.VITE_N8N_WEBHOOK_TEA_GOSSIP_MEOW : import.meta.env.VITE_N8N_WEBHOOK_TEA_GOSSIP,
     };
     
-    return webhookUrls[serviceId as keyof typeof webhookUrls] || webhookUrls.dreams;
+    return webhookUrls[serviceId as keyof typeof webhookUrls] || webhookUrls.daily_boost;
   };
 
   const sendToN8N = async (serviceId: string, userInput: string, tarotCardNames?: string[], meowModeEnabled?: boolean): Promise<string> => {
@@ -348,10 +348,10 @@ export const InteractivePanel: React.FC = () => {
       <section className="relative z-10 px-4 py-8 sm:py-12 lg:py-16 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-gray-100 p-4 sm:p-6 lg:p-8">
+            <div className="bg-white/50 backdrop-blur-md rounded-2xl p-4 sm:p-6 lg:p-8">
               <div className="flex items-center justify-center space-x-2">
-                <Loader2 className="w-5 h-5 animate-spin text-gray-500" />
-                <span className="text-gray-500">Загрузка...</span>
+                <Loader2 className="w-5 h-5 animate-spin text-bubblegum-pink" />
+                <span className="text-black">Loading...</span>
               </div>
             </div>
           </div>
@@ -366,8 +366,8 @@ export const InteractivePanel: React.FC = () => {
         {/* Input Panel */}
         <div className="max-w-4xl mx-auto">
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="bg-gray-100 p-4 sm:p-6 lg:p-8">
-              <h3 className="text-xl sm:text-2xl font-semibold text-black mb-4 sm:mb-6 text-center">
+            <div className="bg-white/50 backdrop-blur-md rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg">
+              <h3 className="text-xl sm:text-2xl font-bold text-black mb-4 sm:mb-6 text-center">
                 {t('interactive.title')}
               </h3>
               
@@ -395,10 +395,10 @@ export const InteractivePanel: React.FC = () => {
                         setResult('');
                         setSelectedCards([]);
                       }}
-                      className={`px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-all duration-200 flex items-center space-x-1 sm:space-x-2 border-b-2 ${
+                      className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 transform hover:scale-105 flex items-center space-x-1 sm:space-x-2 ${
                         selectedService === service.id
-                          ? 'border-black text-black'
-                          : 'border-transparent text-gray-500 hover:text-black'
+                          ? 'bg-bubblegum-pink text-white shadow-lg'
+                          : 'bg-white/50 text-black hover:bg-white/70'
                       }`}
                     >
                       <Icon className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -409,7 +409,7 @@ export const InteractivePanel: React.FC = () => {
               </div>
               
               <div className="space-y-4">
-                <p className="text-gray-500 text-center text-xs sm:text-sm mb-4 px-2">
+                <p className="text-black text-center text-xs sm:text-sm mb-4 px-2">
                   {t(currentService.descriptionKey)}
                 </p>
                 
@@ -417,14 +417,14 @@ export const InteractivePanel: React.FC = () => {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder={t(currentService.placeholderKey)}
-                  className="w-full h-24 sm:h-32 px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-300 text-black placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent text-sm sm:text-base"
+                  className="w-full h-24 sm:h-32 px-3 sm:px-4 py-2 sm:py-3 bg-white/50 border border-bubblegum-pink rounded-xl text-black placeholder-gray-500 resize-none focus:outline-none focus:ring-2 focus:ring-bubblegum-pink focus:border-transparent backdrop-blur-sm text-sm sm:text-base"
                   disabled={isLoading}
                 />
                 
                 <button
                   type="submit"
                   disabled={!input.trim() || isLoading || remaining === 0}
-                  className="relative w-full py-3 sm:py-4 px-4 sm:px-6 bg-black text-white font-semibold text-base sm:text-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-800 transition-colors duration-200 flex items-center justify-center space-x-2"
+                  className="relative w-full py-3 sm:py-4 px-4 sm:px-6 bg-bubblegum-pink text-white rounded-xl font-semibold text-base sm:text-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-bubblegum-pink/90 transition-all duration-200 transform hover:scale-[1.02] flex items-center justify-center space-x-2 shadow-lg"
                 >
                   {isLoading ? (
                     <>
@@ -452,12 +452,12 @@ export const InteractivePanel: React.FC = () => {
 
           {/* Results */}
           {(isLoading || result || selectedCards.length > 0) && (
-            <div className="mt-6 sm:mt-8 bg-gray-100 p-4 sm:p-6 lg:p-8">
-              <h4 className="text-lg sm:text-xl font-semibold text-black mb-4">{t('interactive.results.title')}</h4>
+            <div className="mt-6 sm:mt-8 bg-white/50 backdrop-blur-md rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg">
+              <h4 className="text-lg sm:text-xl font-bold text-black mb-4">{t('interactive.results.title')}</h4>
               
               {selectedCards.length > 0 && (
                 <div className="mb-6">
-                  <h5 className="text-md font-medium text-gray-500 mb-3">{t('interactive.results.selectedCards')}</h5>
+                  <h5 className="text-md font-medium text-bubblegum-pink mb-3">{t('interactive.results.selectedCards')}</h5>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     {selectedCards.map((card, index) => (
                       <div 
@@ -468,14 +468,14 @@ export const InteractivePanel: React.FC = () => {
                           <img
                             src={card.imageUrl}
                             alt={card.displayName}
-                            className="w-full max-w-[250px] mx-auto border border-gray-200"
+                            className="w-full max-w-[250px] mx-auto rounded-lg shadow-lg"
                             onError={(e) => {
                               const target = e.target as HTMLImageElement;
-                              target.src = `https://via.placeholder.com/200x350/f3f4f6/111827?text=${encodeURIComponent(card.displayName)}`;
+                              target.src = `https://via.placeholder.com/200x350/FFC1CC/000000?text=${encodeURIComponent(card.displayName)}`;
                             }}
                           />
                         </div>
-                        <p className="text-xs sm:text-sm text-gray-500 mt-2 font-medium">
+                        <p className="text-xs sm:text-sm text-black mt-2 font-medium">
                           {card.displayName}
                         </p>
                       </div>
@@ -486,9 +486,9 @@ export const InteractivePanel: React.FC = () => {
               
               {isLoading ? (
                 <div className="space-y-3">
-                  <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
-                  <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
-                  <div className="h-4 bg-gray-200 rounded w-3/4 animate-pulse"></div>
+                  <div className="h-4 bg-bubblegum-pink/20 rounded animate-pulse"></div>
+                  <div className="h-4 bg-lavender/20 rounded animate-pulse"></div>
+                  <div className="h-4 bg-bright-peach/20 rounded w-3/4 animate-pulse"></div>
                 </div>
               ) : result && (
                 <>
@@ -500,7 +500,7 @@ export const InteractivePanel: React.FC = () => {
                   <div className="flex justify-center mt-4">
                     <button
                       onClick={handleCopyText}
-                      className="px-4 py-2 bg-gray-200 hover:bg-gray-300 border border-gray-300 rounded text-black hover:text-black transition-all duration-200 flex items-center space-x-2 text-sm"
+                      className="px-4 py-2 bg-white/50 hover:bg-white/70 border border-gray-200 rounded-lg text-black hover:text-black transition-all duration-200 flex items-center space-x-2 text-sm"
                     >
                       {copySuccess ? (
                         <>

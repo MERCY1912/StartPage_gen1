@@ -7,7 +7,14 @@ export default {
         'xs': '475px',
       },
       fontFamily: {
-        'sans': ['Inter', 'sans-serif'],
+        'sans': ['Fredoka One', 'sans-serif'],
+      },
+      colors: {
+        'bubblegum-pink': '#FFC1CC',
+        'lavender': '#E6E6FA',
+        'bright-red': '#FF0000',
+        'bright-purple': '#BF40BF',
+        'bright-peach': '#FFDAB9',
       },
       animation: {
         'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -33,6 +40,10 @@ export default {
       backdropBlur: {
         xs: '2px',
       },
+      boxShadow: {
+        'glow': '0 0 20px rgba(147, 197, 253, 0.3)',
+        'glow-purple': '0 0 20px rgba(168, 85, 247, 0.3)',
+      }
     },
   },
   plugins: [],

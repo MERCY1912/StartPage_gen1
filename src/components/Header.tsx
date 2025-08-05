@@ -76,10 +76,10 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <header className="relative z-10 px-4 py-6 sm:px-6 lg:px-8 border-b border-gray-200">
+      <header className="relative z-10 px-4 py-6 sm:px-6 lg:px-8 bg-white shadow-md">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <a href="/" className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-black flex items-center justify-center">
+          <div className="w-10 h-10 bg-bubblegum-pink rounded-full flex items-center justify-center">
             <Sparkles className="w-6 h-6 text-white" />
           </div>
           <h1 className="text-2xl font-bold text-black">
@@ -89,25 +89,43 @@ export const Header: React.FC = () => {
         
         {/* Right side controls */}
         <div className="hidden sm:flex items-center space-x-8">
-          {/* Language Toggle */}
+          {/* Atmosphere Toggle */}
           <div className="flex items-center space-x-2">
+            <Music className={`w-4 h-4 transition-colors duration-300 ${isAtmosphereMode ? 'text-bubblegum-pink' : 'text-gray-400'}`} />
+            <button
+              type="button"
+              onClick={() => setIsAtmosphereMode(!isAtmosphereMode)}
+              className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-bubblegum-pink/50 ${
+                isAtmosphereMode ? 'bg-bubblegum-pink' : 'bg-gray-300'
+              }`}
+            >
+              <span
+                className={`inline-block h-3 w-3 transform rounded-full bg-white transition-transform duration-300 ${
+                  isAtmosphereMode ? 'translate-x-5' : 'translate-x-1'
+                }`}
+              />
+            </button>
+          </div>
+
+          {/* Language Toggle */}
+          <div className="flex items-center space-x-2 bg-lavender/50 rounded-full p-1">
           <Globe className="w-4 h-4 text-gray-500 ml-2" />
           <button
             onClick={() => setLanguage('ru')}
-            className={`px-3 py-1 text-sm font-medium transition-all duration-200 ${
+            className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
               language === 'ru'
-                ? 'text-black border-b-2 border-black'
-                : 'text-gray-500 hover:text-black'
+                ? 'bg-bubblegum-pink text-white'
+                : 'text-black hover:bg-bubblegum-pink/50'
             }`}
           >
             RU
           </button>
           <button
             onClick={() => setLanguage('en')}
-            className={`px-3 py-1 text-sm font-medium transition-all duration-200 ${
+            className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
               language === 'en'
-                ? 'text-black border-b-2 border-black'
-                : 'text-gray-500 hover:text-black'
+                ? 'bg-bubblegum-pink text-white'
+                : 'text-black hover:bg-bubblegum-pink/50'
             }`}
           >
             ENG
@@ -116,18 +134,18 @@ export const Header: React.FC = () => {
         </div>
         
         <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6">
-          <a href="#support" className="text-black hover:text-gray-700 transition-colors duration-200">
+          <a href="#support" className="text-black hover:text-bubblegum-pink transition-colors duration-200">
             {t('nav.support')}
           </a>
-          <a href="#about" className="text-black hover:text-gray-700 transition-colors duration-200">
+          <a href="#about" className="text-black hover:text-bubblegum-pink transition-colors duration-200">
             {t('nav.about')}
           </a>
-          <a href="#articles" className="text-black hover:text-gray-700 transition-colors duration-200">
+          <a href="#articles" className="text-black hover:text-bubblegum-pink transition-colors duration-200">
             {t('nav.articles')}
           </a>
           <button 
             onClick={handleAuthAction}
-            className="px-4 lg:px-6 py-2 text-white bg-black hover:bg-gray-800 transition-colors duration-200 text-sm lg:text-base flex items-center space-x-2"
+            className="px-4 lg:px-6 py-2 text-white rounded-full transition-all duration-200 transform hover:scale-105 bg-bubblegum-pink hover:bg-bubblegum-pink/90 text-sm lg:text-base flex items-center space-x-2"
           >
             <span>{user ? t('logout') : t('login')}</span>
           </button>
@@ -135,7 +153,7 @@ export const Header: React.FC = () => {
 
         <button 
           onClick={toggleMobileMenu}
-          className="lg:hidden text-black hover:text-gray-700 transition-colors"
+          className="lg:hidden text-black hover:text-bubblegum-pink transition-colors"
         >
           {isMobileMenuOpen ? (
             <X className="w-6 h-6" />
@@ -147,21 +165,21 @@ export const Header: React.FC = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && ReactDOM.createPortal(
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:hidden z-[9999] pt-20">
-            <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)}></div>
-            <div className="relative bg-white border-t border-gray-200">
+            <div className="absolute inset-0 bg-black/10 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)}></div>
+            <div className="relative bg-white/95 backdrop-blur-md border-t border-gray-200">
               <nav className="px-4 py-6 space-y-4">
                 {/* Mobile Language Toggle */}
-                <div className="flex items-center justify-center space-x-2">
+                <div className="flex items-center justify-center space-x-2 bg-lavender/50 rounded-full p-1">
                   <Globe className="w-4 h-4 text-gray-500 ml-2" />
                   <button
                     onClick={() => {
                       setLanguage('ru');
                       setIsMobileMenuOpen(false);
                     }}
-                    className={`px-3 py-1 text-sm font-medium transition-all duration-200 ${
+                    className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
                       language === 'ru'
-                        ? 'text-black border-b-2 border-black'
-                        : 'text-gray-500 hover:text-black'
+                        ? 'bg-bubblegum-pink text-white'
+                        : 'text-black hover:bg-bubblegum-pink/50'
                     }`}
                   >
                     RU
@@ -171,10 +189,10 @@ export const Header: React.FC = () => {
                       setLanguage('en');
                       setIsMobileMenuOpen(false);
                     }}
-                    className={`px-3 py-1 text-sm font-medium transition-all duration-200 ${
+                    className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
                       language === 'en'
-                        ? 'text-black border-b-2 border-black'
-                        : 'text-gray-500 hover:text-black'
+                        ? 'bg-bubblegum-pink text-white'
+                        : 'text-black hover:bg-bubblegum-pink/50'
                     }`}
                   >
                     ENG
@@ -183,21 +201,21 @@ export const Header: React.FC = () => {
                 
                 <a 
                   href="#support"
-                  className="block text-center py-2 font-medium text-black hover:text-gray-700 transition-colors duration-200"
+                  className="block text-center py-2 font-medium text-black hover:text-bubblegum-pink transition-colors duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {t('nav.support')}
                 </a>
                 <a 
                   href="#about" 
-                  className="block text-center py-2 text-black hover:text-gray-700 transition-colors duration-200"
+                  className="block text-center py-2 text-black hover:text-bubblegum-pink transition-colors duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {t('nav.about')}
                 </a>
                 <a 
                   href="#articles" 
-                  className="block text-center py-2 text-black hover:text-gray-700 transition-colors duration-200"
+                  className="block text-center py-2 text-black hover:text-bubblegum-pink transition-colors duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {t('nav.articles')}
@@ -207,7 +225,7 @@ export const Header: React.FC = () => {
                     handleAuthAction();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="w-full px-6 py-3 text-white bg-black hover:bg-gray-800 transition-colors duration-200 text-base flex items-center justify-center space-x-2"
+                  className="w-full px-6 py-3 text-white rounded-full transition-all duration-200 transform hover:scale-105 bg-bubblegum-pink hover:bg-bubblegum-pink/90 text-base flex items-center justify-center space-x-2"
                 >
                   <span>{user ? t('logout') : t('login')}</span>
                 </button>
